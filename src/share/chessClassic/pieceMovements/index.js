@@ -1,4 +1,4 @@
-import { movementsPawnLight } from './pawn'
+import { movementsPawnLight, movementsPawnDark } from './pawn'
 
 const verifySquare = (pieces, pos, playerTypePiece) => {
   if (!pieces) return 'no pieces'
@@ -21,6 +21,16 @@ const pieceMovements = (pieces) => {
 
     if (piece.typePiece === 'pawnLight') {
       return movementsPawnLight(
+        pieces,
+        piece,
+        piecePosC,
+        piecePosL,
+        verifySquare
+      )
+    }
+
+    if (piece.typePiece === 'pawnDark') {
+      return movementsPawnDark(
         pieces,
         piece,
         piecePosC,

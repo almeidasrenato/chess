@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import testPieces from '../../assets/mocks/testPieces'
-import pieceMovements from '../../chess/pieceMovements'
+import pieceMovements from '../../share/chessClassic/pieceMovements'
 
 const ChessBoardFieldProps = styled.div`
   display: flex;
@@ -53,7 +53,6 @@ const ChessBoard = (props) => {
   const [chessBoardPieces, setChessBoardPieces] = useState([])
   const [allPieceMovements, setAllPieceMovements] = useState([])
   const [posPieceSelected, setPosPieceSelected] = useState(undefined)
-  const [posPreview, setPosPreview] = useState([])
 
   useEffect(() => {
     const loadChessBoard = () => {
@@ -62,10 +61,9 @@ const ChessBoard = (props) => {
         sizeSquarePiece: size / 8 - size / 8 / 5,
       })
       let returnPieceMovements = pieceMovements(pieces)
+      console.log('returnPieceMovements', returnPieceMovements)
       setChessBoardPieces(pieces)
       setAllPieceMovements(returnPieceMovements)
-
-      console.log(returnPieceMovements)
     }
     loadChessBoard()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -89,10 +87,19 @@ const ChessBoard = (props) => {
   }
 
   const findPreview = (pos) => {
-    let returnFindPreview = posPreview.find((item) => item === pos)
+    if (posPieceSelected) {
+      let pieceAllMoves = allPieceMovements.find(
+        (item) => item.piecePos === posPieceSelected
+      )
 
-    if (returnFindPreview)
-      return <PreviewMove height={squareSize / 5} width={squareSize / 5} />
+      let findPosPreviewReturn = pieceAllMoves.pieceMoves.find(
+        (item) => item === pos
+      )
+
+      if (findPosPreviewReturn)
+        return <PreviewMove height={squareSize / 5} width={squareSize / 5} />
+    }
+
     return null
   }
 
