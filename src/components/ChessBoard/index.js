@@ -92,12 +92,14 @@ const ChessBoard = (props) => {
         (item) => item.piecePos === posPieceSelected
       )
 
-      let findPosPreviewReturn = pieceAllMoves.pieceMoves.find(
-        (item) => item === pos
-      )
+      if (pieceAllMoves) {
+        let findPosPreviewReturn = pieceAllMoves.pieceMoves.find(
+          (item) => item === pos
+        )
 
-      if (findPosPreviewReturn)
-        return <PreviewMove height={squareSize / 5} width={squareSize / 5} />
+        if (findPosPreviewReturn)
+          return <PreviewMove height={squareSize / 5} width={squareSize / 5} />
+      }
     }
 
     return null
