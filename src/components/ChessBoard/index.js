@@ -38,12 +38,20 @@ const Piece = styled.div`
 `
 
 const PreviewMove = styled.div`
-  position: absolute;
   background: #bdbdbd;
   border-radius: 50%;
+  height: ${(props) => props.height / 5 + 'px'};
+  width: ${(props) => props.width / 5 + 'px'};
+  z-index: 1;
+`
+
+const SquarePreviewMove = styled.div`
   height: ${(props) => props.height + 'px'};
   width: ${(props) => props.width + 'px'};
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
 `
 
 const ChessBoard = (props) => {
@@ -61,7 +69,6 @@ const ChessBoard = (props) => {
         sizeSquarePiece: size / 8 - size / 8 / 5,
       })
       let returnPieceMovements = pieceMovements(pieces)
-      console.log('returnPieceMovements', returnPieceMovements)
       setChessBoardPieces(pieces)
       setAllPieceMovements(returnPieceMovements)
     }
@@ -86,7 +93,33 @@ const ChessBoard = (props) => {
     return null
   }
 
-  const findPreview = (pos) => {
+  const findPreview = (movedPos) => {
+    const movePiece = () => {
+      let findPieceMove = chessBoardPieces.find(
+        (item) => item.pos === posPieceSelected
+      )
+
+      findPieceMove.pos = movedPos
+      findPieceMove.firstMove = false
+
+      let newChessBoardPieces = chessBoardPieces
+
+      newChessBoardPieces = newChessBoardPieces.filter(
+        (item) => item.pos !== posPieceSelected
+      )
+
+      newChessBoardPieces = newChessBoardPieces.filter(
+        (item) => item.pos !== movedPos
+      )
+
+      newChessBoardPieces.push(findPieceMove)
+
+      setChessBoardPieces(newChessBoardPieces)
+      setPosPieceSelected(undefined)
+      let returnPieceMovements = pieceMovements(newChessBoardPieces)
+      setAllPieceMovements(returnPieceMovements)
+    }
+
     if (posPieceSelected) {
       let pieceAllMoves = allPieceMovements.find(
         (item) => item.piecePos === posPieceSelected
@@ -94,11 +127,19 @@ const ChessBoard = (props) => {
 
       if (pieceAllMoves) {
         let findPosPreviewReturn = pieceAllMoves.pieceMoves.find(
-          (item) => item === pos
+          (item) => item === movedPos
         )
 
         if (findPosPreviewReturn)
-          return <PreviewMove height={squareSize / 5} width={squareSize / 5} />
+          return (
+            <SquarePreviewMove
+              height={squareSize}
+              width={squareSize}
+              onClick={() => movePiece()}
+            >
+              <PreviewMove height={squareSize} width={squareSize} />
+            </SquarePreviewMove>
+          )
       }
     }
 
