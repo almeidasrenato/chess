@@ -1,6 +1,7 @@
 import { movementsPawnLight, movementsPawnDark } from './pawn'
-import { movimentsHorse } from './horse'
-import { movimentsTower } from './tower'
+import { movementsHorse } from './horse'
+import { movementsTower } from './tower'
+import { movementsBishop } from './bishop'
 
 const verifySquare = (pieces, pos, playerTypePiece) => {
   if (
@@ -52,11 +53,15 @@ const pieceMovements = (pieces) => {
     }
 
     if (piece.typePiece === 'horseLight' || piece.typePiece === 'horseDark') {
-      return movimentsHorse(pieces, piece, piecePosC, piecePosL, verifySquare)
+      return movementsHorse(pieces, piece, piecePosC, piecePosL, verifySquare)
     }
 
     if (piece.typePiece === 'towerLight' || piece.typePiece === 'towerDark') {
-      return movimentsTower(pieces, piece, piecePosC, piecePosL, verifySquare)
+      return movementsTower(pieces, piece, piecePosC, piecePosL, verifySquare)
+    }
+
+    if (piece.typePiece === 'bishopLight' || piece.typePiece === 'bishopDark') {
+      return movementsBishop(pieces, piece, piecePosC, piecePosL, verifySquare)
     }
 
     return {

@@ -1,4 +1,4 @@
-const movimentsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
+const movementsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   let horseMove = []
 
   const returnHorseVerifySquare = (verifyPos) => {
@@ -70,4 +70,4 @@ const movimentsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   }
 }
 
-export { movimentsHorse }
+export { movementsHorse }

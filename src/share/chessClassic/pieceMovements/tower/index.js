@@ -1,5 +1,5 @@
-const movimentsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
-  const returnHorseVerifySquare = (verifyPos) => {
+const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
+  const returnTowerVerifySquare = (verifyPos) => {
     let squareMoveStatus = verifySquare(
       pieces,
       verifyPos,
@@ -17,7 +17,7 @@ const movimentsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   let towerMove = []
 
   for (let i = 1; parseInt(piecePosC) + i <= 8; i++) {
-    let verifySquare = returnHorseVerifySquare(
+    let verifySquare = returnTowerVerifySquare(
       'c' + (parseInt(piecePosC) + i) + 'l' + parseInt(piecePosL)
     )
 
@@ -31,7 +31,7 @@ const movimentsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   }
 
   for (let i = 1; parseInt(piecePosC) - i >= 1; i++) {
-    let verifySquare = returnHorseVerifySquare(
+    let verifySquare = returnTowerVerifySquare(
       'c' + (parseInt(piecePosC) - i) + 'l' + parseInt(piecePosL)
     )
 
@@ -45,7 +45,7 @@ const movimentsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   }
 
   for (let i = 1; parseInt(piecePosL) + i <= 8; i++) {
-    let verifySquare = returnHorseVerifySquare(
+    let verifySquare = returnTowerVerifySquare(
       'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) + i)
     )
 
@@ -59,7 +59,7 @@ const movimentsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   }
 
   for (let i = 1; parseInt(piecePosL) - i >= 1; i++) {
-    let verifySquare = returnHorseVerifySquare(
+    let verifySquare = returnTowerVerifySquare(
       'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) - i)
     )
 
@@ -87,4 +87,4 @@ const movimentsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   }
 }
 
-export { movimentsTower }
+export { movementsTower }
