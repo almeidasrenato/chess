@@ -5,7 +5,7 @@ import {
   horseLightImg,
   towerLightImg,
   pawnLightImg,
-} from '../../assetsPiecesLight'
+} from '../../../assets/assetsPiecesLight'
 
 import {
   queenDarkImg,
@@ -14,7 +14,7 @@ import {
   horseDarkImg,
   towerDarkImg,
   pawnDarkImg,
-} from '../../assetsPiecesDark'
+} from '../../../assets/assetsPiecesDark'
 
 const testPieces = (props) => [
   {

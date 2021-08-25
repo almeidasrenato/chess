@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import testPieces from '../../assets/mocks/testPieces'
+import testPieces from '../../share/mocks/testPieces'
 import pieceMovements from '../../share/chessClassic/pieceMovements'
 
 const ChessBoardFieldProps = styled.div`

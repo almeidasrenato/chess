@@ -2,6 +2,7 @@ import { movementsPawnLight, movementsPawnDark } from './pawn'
 import { movementsHorse } from './horse'
 import { movementsTower } from './tower'
 import { movementsBishop } from './bishop'
+import { movementsQueen } from './queen'
 
 const verifySquare = (pieces, pos, playerTypePiece) => {
   if (
@@ -62,6 +63,10 @@ const pieceMovements = (pieces) => {
 
     if (piece.typePiece === 'bishopLight' || piece.typePiece === 'bishopDark') {
       return movementsBishop(pieces, piece, piecePosC, piecePosL, verifySquare)
+    }
+
+    if (piece.typePiece === 'queenLight' || piece.typePiece === 'queenDark') {
+      return movementsQueen(pieces, piece, piecePosC, piecePosL, verifySquare)
     }
 
     return {
