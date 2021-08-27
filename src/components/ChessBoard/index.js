@@ -19,6 +19,10 @@ const Square = styled.div`
   width: ${(props) => props.width + 'px'};
 `
 
+const LabelPosSquare = styled.div`
+  position: absolute;
+`
+
 const SquareSelected = styled.div`
   background: ${(props) => props.background};
   height: 100%;
@@ -61,6 +65,7 @@ const ChessBoard = (props) => {
   const [chessBoardPieces, setChessBoardPieces] = useState([])
   const [allPieceMovements, setAllPieceMovements] = useState([])
   const [posPieceSelected, setPosPieceSelected] = useState(undefined)
+  const [turn] = useState('light')
 
   useEffect(() => {
     const loadChessBoard = () => {
@@ -68,7 +73,7 @@ const ChessBoard = (props) => {
         ...props.theme,
         sizeSquarePiece: size / 8 - size / 8 / 5,
       })
-      let returnPieceMovements = pieceMovements(pieces)
+      let returnPieceMovements = pieceMovements(pieces, turn)
       setChessBoardPieces(pieces)
       setAllPieceMovements(returnPieceMovements)
     }
@@ -116,7 +121,7 @@ const ChessBoard = (props) => {
 
       setChessBoardPieces(newChessBoardPieces)
       setPosPieceSelected(undefined)
-      let returnPieceMovements = pieceMovements(newChessBoardPieces)
+      let returnPieceMovements = pieceMovements(newChessBoardPieces, turn)
       setAllPieceMovements(returnPieceMovements)
     }
 
@@ -170,6 +175,9 @@ const ChessBoard = (props) => {
               height={squareSize}
               width={squareSize}
             >
+              <LabelPosSquare>
+                {'c' + (index + 1) + 'l' + (8 - index2)}
+              </LabelPosSquare>
               <SquareSelected
                 background={
                   posPieceSelected === 'c' + (index + 1) + 'l' + (8 - index2)

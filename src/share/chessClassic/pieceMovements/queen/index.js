@@ -1,10 +1,6 @@
 const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   const returnQueenVerifySquare = (verifyPos) => {
-    let squareMoveStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
+    let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
 
     return { status: squareMoveStatus, pos: verifyPos }
   }
@@ -167,6 +163,18 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: queenMove,
+    pieceColor: piece.pieceColor,
+    pieceType: piece.typePiece,
+    allPiecePosAttack: [
+      ...up,
+      ...down,
+      ...left,
+      ...right,
+      ...diagonalUpRight,
+      ...diagonalUpLeft,
+      ...diagonalDownRight,
+      ...diagonalDownLeft,
+    ],
     piecePosAttack: {
       up: up,
       down: down,

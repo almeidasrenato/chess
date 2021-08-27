@@ -10,75 +10,57 @@ const movementsPawnLight = (
   let pawnAttackDiagonalUpRight = undefined
 
   //Move pawn
-  if (piece.firstMove === true) {
-    for (let i = 1; i <= 2; i++) {
-      if (parseInt(piecePosL) + i > 8) break
 
-      let verifyPos = 'c' + piecePosC + 'l' + (parseInt(piecePosL) + i)
-      let squareMoveStatus = verifySquare(
-        pieces,
-        verifyPos,
-        piece.playerTypePiece
-      )
+  let verifyPos = 'c' + piecePosC + 'l' + (parseInt(piecePosL) + 1)
+  let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
+  if (squareMoveStatus === 'no piece') pawnMove.push(verifyPos)
 
-      if (squareMoveStatus !== 'no piece') break
-
-      if (squareMoveStatus === 'no piece') {
-        pawnMove.push(verifyPos)
-      }
-    }
-  } else {
-    if (parseInt(piecePosL) + 1 <= 8) {
-      let verifyPos = 'c' + piecePosC + 'l' + (parseInt(piecePosL) + 1)
-      let squareMoveStatus = verifySquare(
-        pieces,
-        verifyPos,
-        piece.playerTypePiece
-      )
-
-      if (squareMoveStatus === 'no piece') {
-        pawnMove.push(verifyPos)
-      }
-    }
-  }
-  // end
-
-  //attack pawnMove
-  if (parseInt(piecePosC) - 1 >= 1 && parseInt(piecePosL) + 1 <= 8) {
-    let verifyPos =
-      'c' + (parseInt(piecePosC) - 1) + 'l' + (parseInt(piecePosL) + 1)
-    let squareAttackUpLeftStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
-
-    if (squareAttackUpLeftStatus === 'enemy piece') {
-      pawnAttackDiagonalUpLeft = { diagonalUpLeft: [verifyPos] }
-      pawnMove.push(verifyPos)
-    }
+  if (piece.firstMove === true && squareMoveStatus === 'no piece') {
+    let verifyPos2 = 'c' + piecePosC + 'l' + (parseInt(piecePosL) + 2)
+    squareMoveStatus = verifySquare(pieces, verifyPos2, piece.pieceColor)
+    if (squareMoveStatus === 'no piece') pawnMove.push(verifyPos2)
   }
 
-  if (parseInt(piecePosC) + 1 <= 8 && parseInt(piecePosL) + 1 <= 8) {
-    let verifyPos =
-      'c' + (parseInt(piecePosC) + 1) + 'l' + (parseInt(piecePosL) + 1)
-    let squareAttackUpRightStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
+  //attack pawn
 
-    if (squareAttackUpRightStatus === 'enemy piece') {
-      pawnAttackDiagonalUpRight = { diagonalUpRight: [verifyPos] }
-      pawnMove.push(verifyPos)
-    }
+  verifyPos = 'c' + (parseInt(piecePosC) - 1) + 'l' + (parseInt(piecePosL) + 1)
+  let squareAttackUpLeftStatus = verifySquare(
+    pieces,
+    verifyPos,
+    piece.pieceColor
+  )
+
+  if (squareAttackUpLeftStatus !== 'invalid position') {
+    pawnAttackDiagonalUpLeft = { diagonalUpLeft: [verifyPos] }
+    if (squareAttackUpLeftStatus === 'enemy piece') pawnMove.push(verifyPos)
   }
-  //end
+
+  verifyPos = 'c' + (parseInt(piecePosC) + 1) + 'l' + (parseInt(piecePosL) + 1)
+  let squareAttackUpRightStatus = verifySquare(
+    pieces,
+    verifyPos,
+    piece.pieceColor
+  )
+
+  if (squareAttackUpRightStatus !== 'invalid position') {
+    pawnAttackDiagonalUpRight = { diagonalUpRight: [verifyPos] }
+    if (squareAttackUpRightStatus === 'enemy piece') pawnMove.push(verifyPos)
+  }
 
   return {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: pawnMove,
+    pieceColor: piece.pieceColor,
+    pieceType: piece.typePiece,
+    allPiecePosAttack: [
+      ...(pawnAttackDiagonalUpLeft
+        ? pawnAttackDiagonalUpLeft.diagonalUpLeft
+        : ''),
+      ...(pawnAttackDiagonalUpRight
+        ? pawnAttackDiagonalUpRight.diagonalUpRight
+        : ''),
+    ],
     piecePosAttack: {
       ...pawnAttackDiagonalUpLeft,
       ...pawnAttackDiagonalUpRight,
@@ -94,82 +76,63 @@ const movementsPawnDark = (
   verifySquare
 ) => {
   let pawnMove = []
-  let pawnAttackDiagonalUpLeft = undefined
-  let pawnAttackDiagonalUpRight = undefined
+  let pawnAttackDiagonalDownLeft = undefined
+  let pawnAttackDiagonalDownRight = undefined
 
   //Move pawn
-  if (piece.firstMove === true) {
-    for (let i = 1; i <= 2; i++) {
-      if (parseInt(piecePosL) - i < 1) break
 
-      let verifyPos = 'c' + piecePosC + 'l' + (parseInt(piecePosL) - i)
-      let squareMoveStatus = verifySquare(
-        pieces,
-        verifyPos,
-        piece.playerTypePiece
-      )
+  let verifyPos = 'c' + piecePosC + 'l' + (parseInt(piecePosL) - 1)
+  let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
+  if (squareMoveStatus === 'no piece') pawnMove.push(verifyPos)
 
-      if (squareMoveStatus !== 'no piece') break
-
-      if (squareMoveStatus === 'no piece') {
-        pawnMove.push(verifyPos)
-      }
-    }
-  } else {
-    if (parseInt(piecePosL) - 1 >= 1) {
-      let verifyPos = 'c' + piecePosC + 'l' + (parseInt(piecePosL) - 1)
-      let squareMoveStatus = verifySquare(
-        pieces,
-        verifyPos,
-        piece.playerTypePiece
-      )
-
-      if (squareMoveStatus === 'no piece') {
-        pawnMove.push(verifyPos)
-      }
-    }
-  }
-  // end
-
-  //attack pawnMove
-  if (parseInt(piecePosC) - 1 >= 1 && parseInt(piecePosL) - 1 >= 1) {
-    let verifyPos =
-      'c' + (parseInt(piecePosC) - 1) + 'l' + (parseInt(piecePosL) - 1)
-    let squareAttackUpLeftStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
-
-    if (squareAttackUpLeftStatus === 'enemy piece') {
-      pawnAttackDiagonalUpLeft = { diagonalUpLeft: [verifyPos] }
-      pawnMove.push(verifyPos)
-    }
+  if (piece.firstMove === true && squareMoveStatus === 'no piece') {
+    let verifyPos2 = 'c' + piecePosC + 'l' + (parseInt(piecePosL) - 2)
+    squareMoveStatus = verifySquare(pieces, verifyPos2, piece.pieceColor)
+    if (squareMoveStatus === 'no piece') pawnMove.push(verifyPos2)
   }
 
-  if (parseInt(piecePosC) + 1 <= 8 && parseInt(piecePosL) - 1 >= 1) {
-    let verifyPos =
-      'c' + (parseInt(piecePosC) + 1) + 'l' + (parseInt(piecePosL) - 1)
-    let squareAttackUpRightStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
+  //attack pawn
+  verifyPos = 'c' + (parseInt(piecePosC) - 1) + 'l' + (parseInt(piecePosL) - 1)
+  let squareAttackUpLeftStatus = verifySquare(
+    pieces,
+    verifyPos,
+    piece.pieceColor
+  )
 
-    if (squareAttackUpRightStatus === 'enemy piece') {
-      pawnAttackDiagonalUpRight = { diagonalUpRight: [verifyPos] }
-      pawnMove.push(verifyPos)
-    }
+  if (squareAttackUpLeftStatus !== 'invalid position') {
+    pawnAttackDiagonalDownLeft = { diagonalDownLeft: [verifyPos] }
+    if (squareAttackUpLeftStatus === 'enemy piece') pawnMove.push(verifyPos)
   }
-  //end
+
+  verifyPos = 'c' + (parseInt(piecePosC) + 1) + 'l' + (parseInt(piecePosL) - 1)
+  let squareAttackUpRightStatus = verifySquare(
+    pieces,
+    verifyPos,
+    piece.pieceColor
+  )
+
+  if (squareAttackUpRightStatus !== 'invalid position') {
+    pawnAttackDiagonalDownRight = { diagonalDownRight: [verifyPos] }
+    if (squareAttackUpRightStatus === 'enemy piece') pawnMove.push(verifyPos)
+  }
 
   return {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: pawnMove,
+    pieceColor: piece.pieceColor,
+    pieceType: piece.typePiece,
+    allPiecePosAttack: [
+      ...(pawnAttackDiagonalDownLeft
+        ? pawnAttackDiagonalDownLeft.diagonalDownLeft
+        : ''),
+      ...(pawnAttackDiagonalDownRight
+        ? pawnAttackDiagonalDownRight.diagonalDownRight
+        : ''),
+    ],
     piecePosAttack: {
-      ...pawnAttackDiagonalUpLeft,
-      ...pawnAttackDiagonalUpRight,
+      ...pawnAttackDiagonalDownLeft,
+      ...pawnAttackDiagonalDownRight,
     },
   }
 }

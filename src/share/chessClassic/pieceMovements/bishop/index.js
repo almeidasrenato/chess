@@ -1,10 +1,6 @@
 const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   const returnBishopVerifySquare = (verifyPos) => {
-    let squareMoveStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
+    let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
 
     return { status: squareMoveStatus, pos: verifyPos }
   }
@@ -99,6 +95,14 @@ const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: bishopMove,
+    pieceColor: piece.pieceColor,
+    pieceType: piece.typePiece,
+    allPiecePosAttack: [
+      ...diagonalUpRight,
+      ...diagonalUpLeft,
+      ...diagonalDownRight,
+      ...diagonalDownLeft,
+    ],
     piecePosAttack: {
       diagonalUpRight: diagonalUpRight,
       diagonalUpLeft: diagonalUpLeft,

@@ -19,8 +19,8 @@ import {
 const testPieces = (props) => [
   {
     id: 1,
-    typePiece: 'kingLight',
-    playerTypePiece: 'light',
+    typePiece: 'king',
+    pieceColor: 'light',
     pos: 'c5l1',
     firstMove: true,
     src: kingLightImg(
@@ -33,8 +33,8 @@ const testPieces = (props) => [
   },
   {
     id: 2,
-    typePiece: 'queenLight',
-    playerTypePiece: 'light',
+    typePiece: 'queen',
+    pieceColor: 'light',
     pos: 'c4l1',
     firstMove: true,
     src: queenLightImg(
@@ -47,8 +47,8 @@ const testPieces = (props) => [
   },
   {
     id: 3,
-    typePiece: 'bishopLight',
-    playerTypePiece: 'light',
+    typePiece: 'bishop',
+    pieceColor: 'light',
     pos: 'c3l1',
     firstMove: true,
     src: bishopLightImg(
@@ -61,8 +61,8 @@ const testPieces = (props) => [
   },
   {
     id: 4,
-    typePiece: 'horseLight',
-    playerTypePiece: 'light',
+    typePiece: 'horse',
+    pieceColor: 'light',
     pos: 'c2l1',
     firstMove: true,
     src: horseLightImg(
@@ -75,8 +75,8 @@ const testPieces = (props) => [
   },
   {
     id: 5,
-    typePiece: 'towerLight',
-    playerTypePiece: 'light',
+    typePiece: 'tower',
+    pieceColor: 'light',
     pos: 'c1l1',
     firstMove: true,
     src: towerLightImg(
@@ -89,8 +89,8 @@ const testPieces = (props) => [
   },
   {
     id: 6,
-    typePiece: 'bishopLight',
-    playerTypePiece: 'light',
+    typePiece: 'bishop',
+    pieceColor: 'light',
     pos: 'c6l1',
     firstMove: true,
     src: bishopLightImg(
@@ -103,8 +103,8 @@ const testPieces = (props) => [
   },
   {
     id: 7,
-    typePiece: 'horseLight',
-    playerTypePiece: 'light',
+    typePiece: 'horse',
+    pieceColor: 'light',
     pos: 'c7l1',
     firstMove: true,
     src: horseLightImg(
@@ -117,8 +117,8 @@ const testPieces = (props) => [
   },
   {
     id: 8,
-    typePiece: 'towerLight',
-    playerTypePiece: 'light',
+    typePiece: 'tower',
+    pieceColor: 'light',
     pos: 'c8l1',
     firstMove: true,
     src: towerLightImg(
@@ -131,8 +131,8 @@ const testPieces = (props) => [
   },
   {
     id: 9,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c1l2',
     firstMove: true,
     src: pawnLightImg(
@@ -145,8 +145,8 @@ const testPieces = (props) => [
   },
   {
     id: 10,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c2l2',
     firstMove: true,
     src: pawnLightImg(
@@ -159,8 +159,8 @@ const testPieces = (props) => [
   },
   {
     id: 11,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c3l2',
     firstMove: true,
     src: pawnLightImg(
@@ -173,8 +173,8 @@ const testPieces = (props) => [
   },
   {
     id: 12,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c4l2',
     firstMove: true,
     src: pawnLightImg(
@@ -187,8 +187,8 @@ const testPieces = (props) => [
   },
   {
     id: 13,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c5l2',
     firstMove: true,
     src: pawnLightImg(
@@ -201,8 +201,8 @@ const testPieces = (props) => [
   },
   {
     id: 14,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c6l2',
     firstMove: true,
     src: pawnLightImg(
@@ -215,8 +215,8 @@ const testPieces = (props) => [
   },
   {
     id: 15,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c7l2',
     firstMove: true,
     src: pawnLightImg(
@@ -229,8 +229,8 @@ const testPieces = (props) => [
   },
   {
     id: 16,
-    typePiece: 'pawnLight',
-    playerTypePiece: 'light',
+    typePiece: 'pawn',
+    pieceColor: 'light',
     pos: 'c8l2',
     firstMove: true,
     src: pawnLightImg(
@@ -243,8 +243,8 @@ const testPieces = (props) => [
   },
   {
     id: 17,
-    typePiece: 'kingDark',
-    playerTypePiece: 'dark',
+    typePiece: 'king',
+    pieceColor: 'dark',
     pos: 'c5l8',
     firstMove: true,
     src: kingDarkImg(
@@ -257,8 +257,8 @@ const testPieces = (props) => [
   },
   {
     id: 18,
-    typePiece: 'queenDark',
-    playerTypePiece: 'dark',
+    typePiece: 'queen',
+    pieceColor: 'dark',
     pos: 'c4l8',
     firstMove: true,
     src: queenDarkImg(
@@ -271,8 +271,8 @@ const testPieces = (props) => [
   },
   {
     id: 19,
-    typePiece: 'bishopDark',
-    playerTypePiece: 'dark',
+    typePiece: 'bishop',
+    pieceColor: 'dark',
     pos: 'c3l8',
     firstMove: true,
     src: bishopDarkImg(
@@ -285,8 +285,8 @@ const testPieces = (props) => [
   },
   {
     id: 20,
-    typePiece: 'bishopDark',
-    playerTypePiece: 'dark',
+    typePiece: 'bishop',
+    pieceColor: 'dark',
     pos: 'c6l8',
     firstMove: true,
     src: bishopDarkImg(
@@ -299,8 +299,8 @@ const testPieces = (props) => [
   },
   {
     id: 21,
-    typePiece: 'horseDark',
-    playerTypePiece: 'dark',
+    typePiece: 'horse',
+    pieceColor: 'dark',
     pos: 'c2l8',
     firstMove: true,
     src: horseDarkImg(
@@ -313,8 +313,8 @@ const testPieces = (props) => [
   },
   {
     id: 22,
-    typePiece: 'horseDark',
-    playerTypePiece: 'dark',
+    typePiece: 'horse',
+    pieceColor: 'dark',
     pos: 'c7l8',
     firstMove: true,
     src: horseDarkImg(
@@ -327,8 +327,8 @@ const testPieces = (props) => [
   },
   {
     id: 23,
-    typePiece: 'towerDark',
-    playerTypePiece: 'dark',
+    typePiece: 'tower',
+    pieceColor: 'dark',
     pos: 'c1l8',
     firstMove: true,
     src: towerDarkImg(
@@ -341,8 +341,8 @@ const testPieces = (props) => [
   },
   {
     id: 24,
-    typePiece: 'towerDark',
-    playerTypePiece: 'dark',
+    typePiece: 'tower',
+    pieceColor: 'dark',
     pos: 'c8l8',
     firstMove: true,
     src: towerDarkImg(
@@ -355,8 +355,8 @@ const testPieces = (props) => [
   },
   {
     id: 25,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c1l3',
     firstMove: true,
     src: pawnDarkImg(
@@ -369,8 +369,8 @@ const testPieces = (props) => [
   },
   {
     id: 26,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c2l7',
     firstMove: true,
     src: pawnDarkImg(
@@ -383,8 +383,8 @@ const testPieces = (props) => [
   },
   {
     id: 27,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c3l3',
     firstMove: true,
     src: pawnDarkImg(
@@ -397,8 +397,8 @@ const testPieces = (props) => [
   },
   {
     id: 28,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c4l7',
     firstMove: true,
     src: pawnDarkImg(
@@ -411,8 +411,8 @@ const testPieces = (props) => [
   },
   {
     id: 29,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c5l7',
     firstMove: true,
     src: pawnDarkImg(
@@ -425,8 +425,8 @@ const testPieces = (props) => [
   },
   {
     id: 30,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c6l7',
     firstMove: true,
     src: pawnDarkImg(
@@ -439,8 +439,8 @@ const testPieces = (props) => [
   },
   {
     id: 31,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c7l7',
     firstMove: true,
     src: pawnDarkImg(
@@ -453,8 +453,8 @@ const testPieces = (props) => [
   },
   {
     id: 32,
-    typePiece: 'pawnDark',
-    playerTypePiece: 'dark',
+    typePiece: 'pawn',
+    pieceColor: 'dark',
     pos: 'c8l7',
     firstMove: true,
     src: pawnDarkImg(

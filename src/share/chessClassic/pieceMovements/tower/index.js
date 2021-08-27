@@ -1,10 +1,6 @@
 const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   const returnTowerVerifySquare = (verifyPos) => {
-    let squareMoveStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
+    let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
 
     return { status: squareMoveStatus, pos: verifyPos }
   }
@@ -78,6 +74,9 @@ const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: towerMove,
+    pieceColor: piece.pieceColor,
+    pieceType: piece.typePiece,
+    allPiecePosAttack: [...up, ...down, ...left, ...right],
     piecePosAttack: {
       up: up,
       down: down,

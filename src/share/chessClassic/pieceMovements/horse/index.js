@@ -2,11 +2,7 @@ const movementsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   let horseMove = []
 
   const returnHorseVerifySquare = (verifyPos) => {
-    let squareMoveStatus = verifySquare(
-      pieces,
-      verifyPos,
-      piece.playerTypePiece
-    )
+    let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
 
     if (
       squareMoveStatus !== 'ally piece' &&
@@ -61,6 +57,14 @@ const movementsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: horseMove,
+    pieceColor: piece.pieceColor,
+    pieceType: piece.typePiece,
+    allPiecePosAttack: [
+      ...diagonalUpLeft,
+      ...diagonalUpRight,
+      ...diagonalDownLeft,
+      ...diagonalDownRight,
+    ],
     piecePosAttack: {
       diagonalUpLeft: diagonalUpLeft,
       diagonalUpRight: diagonalUpRight,
