@@ -47,6 +47,12 @@ const movementsPawnLight = (
     if (squareAttackUpRightStatus === 'enemy piece') pawnMove.push(verifyPos)
   }
 
+  //=================================================================
+  if (piece.firstMove === true) {
+  }
+
+  //=================================================================
+
   return {
     pieceId: piece.id,
     piecePos: piece.pos,
@@ -115,6 +121,10 @@ const movementsPawnDark = (
     pawnAttackDiagonalDownRight = { diagonalDownRight: [verifyPos] }
     if (squareAttackUpRightStatus === 'enemy piece') pawnMove.push(verifyPos)
   }
+
+  //=================================================================
+
+  //=================================================================
 
   return {
     pieceId: piece.id,

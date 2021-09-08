@@ -21,11 +21,14 @@ const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + i) + 'l' + (parseInt(piecePosL) + i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalUpRight.push(verifySquare.pos)
+        break
+      }
+
       diagonalUpRight.push(verifySquare.pos)
+      bishopMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -39,11 +42,14 @@ const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) - i) + 'l' + (parseInt(piecePosL) + i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalUpLeft.push(verifySquare.pos)
+        break
+      }
+
       diagonalUpLeft.push(verifySquare.pos)
+      bishopMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -57,11 +63,13 @@ const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) - i) + 'l' + (parseInt(piecePosL) - i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalDownRight.push(verifySquare.pos)
+        break
+      }
       diagonalDownRight.push(verifySquare.pos)
+      bishopMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -75,21 +83,16 @@ const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + i) + 'l' + (parseInt(piecePosL) - i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalDownLeft.push(verifySquare.pos)
+        break
+      }
       diagonalDownLeft.push(verifySquare.pos)
+      bishopMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
-
-  bishopMove.push(
-    ...diagonalUpRight,
-    ...diagonalUpLeft,
-    ...diagonalDownRight,
-    ...diagonalDownLeft
-  )
 
   return {
     pieceId: piece.id,

@@ -4,11 +4,10 @@ const movementsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   const returnHorseVerifySquare = (verifyPos) => {
     let squareMoveStatus = verifySquare(pieces, verifyPos, piece.pieceColor)
 
-    if (
-      squareMoveStatus !== 'ally piece' &&
-      squareMoveStatus !== 'invalid position'
-    )
+    if (squareMoveStatus !== 'invalid position') {
+      if (squareMoveStatus !== 'ally piece') horseMove.push(verifyPos)
       return [verifyPos]
+    }
 
     return []
   }
@@ -45,13 +44,6 @@ const movementsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + 2) + 'l' + (parseInt(piecePosL) - 1)
     ),
   ]
-
-  horseMove.push(
-    ...diagonalUpLeft,
-    ...diagonalUpRight,
-    ...diagonalDownLeft,
-    ...diagonalDownRight
-  )
 
   return {
     pieceId: piece.id,

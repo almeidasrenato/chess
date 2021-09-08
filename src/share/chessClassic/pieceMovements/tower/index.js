@@ -17,11 +17,13 @@ const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + i) + 'l' + parseInt(piecePosL)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        right.push(verifySquare.pos)
+        break
+      }
       right.push(verifySquare.pos)
+      towerMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -31,11 +33,13 @@ const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) - i) + 'l' + parseInt(piecePosL)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        left.push(verifySquare.pos)
+        break
+      }
       left.push(verifySquare.pos)
+      towerMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -45,11 +49,13 @@ const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) + i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        up.push(verifySquare.pos)
+        break
+      }
       up.push(verifySquare.pos)
+      towerMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -59,16 +65,16 @@ const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) - i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        down.push(verifySquare.pos)
+        break
+      }
       down.push(verifySquare.pos)
+      towerMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
-
-  towerMove.push(...up, ...down, ...left, ...right)
 
   return {
     pieceId: piece.id,

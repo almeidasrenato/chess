@@ -73,8 +73,10 @@ const ChessBoard = (props) => {
         ...props.theme,
         sizeSquarePiece: size / 8 - size / 8 / 5,
       })
-      let returnPieceMovements = pieceMovements(pieces, turn)
+
       setChessBoardPieces(pieces)
+
+      let returnPieceMovements = pieceMovements(pieces, turn)
       setAllPieceMovements(returnPieceMovements)
     }
     loadChessBoard()

@@ -23,11 +23,14 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     'c' + (parseInt(piecePosC) + 1) + 'l' + parseInt(piecePosL)
   )
 
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    right.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      right.push(verifySquarePos.pos)
+    } else {
+      right.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
 
   verifySquarePos = undefined
 
@@ -35,11 +38,14 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     'c' + (parseInt(piecePosC) - 1) + 'l' + parseInt(piecePosL)
   )
 
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    left.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      left.push(verifySquarePos.pos)
+    } else {
+      left.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
 
   verifySquarePos = undefined
 
@@ -47,11 +53,14 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) + 1)
   )
 
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    up.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      up.push(verifySquarePos.pos)
+    } else {
+      up.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
 
   verifySquarePos = undefined
 
@@ -59,11 +68,14 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) - 1)
   )
 
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    down.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      down.push(verifySquarePos.pos)
+    } else {
+      down.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
 
   verifySquarePos = undefined
 
@@ -71,54 +83,55 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
   verifySquarePos = returnKingVerifySquare(
     'c' + (parseInt(piecePosC) + 1) + 'l' + (parseInt(piecePosL) + 1)
   )
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    diagonalUpRight.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      diagonalUpRight.push(verifySquarePos.pos)
+    } else {
+      diagonalUpRight.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
   verifySquarePos = undefined
 
   verifySquarePos = returnKingVerifySquare(
     'c' + (parseInt(piecePosC) - 1) + 'l' + (parseInt(piecePosL) + 1)
   )
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    diagonalUpLeft.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      diagonalUpLeft.push(verifySquarePos.pos)
+    } else {
+      diagonalUpLeft.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
   verifySquarePos = undefined
 
   verifySquarePos = returnKingVerifySquare(
     'c' + (parseInt(piecePosC) - 1) + 'l' + (parseInt(piecePosL) - 1)
   )
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    diagonalDownRight.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      diagonalDownRight.push(verifySquarePos.pos)
+    } else {
+      diagonalDownRight.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
   verifySquarePos = undefined
 
   verifySquarePos = returnKingVerifySquare(
     'c' + (parseInt(piecePosC) + 1) + 'l' + (parseInt(piecePosL) - 1)
   )
-  if (
-    verifySquarePos.status !== 'ally piece' &&
-    verifySquarePos.status !== 'invalid position'
-  )
-    diagonalDownLeft.push(verifySquarePos.pos)
+  if (verifySquarePos.status !== 'invalid position') {
+    if (verifySquarePos.status === 'ally piece') {
+      diagonalDownLeft.push(verifySquarePos.pos)
+    } else {
+      diagonalDownLeft.push(verifySquarePos.pos)
+      kingMove.push(verifySquarePos.pos)
+    }
+  }
 
   //========================
-
-  kingMove.push(
-    ...up,
-    ...down,
-    ...left,
-    ...right,
-    ...diagonalUpRight,
-    ...diagonalUpLeft,
-    ...diagonalDownRight,
-    ...diagonalDownLeft
-  )
 
   return {
     pieceId: piece.id,

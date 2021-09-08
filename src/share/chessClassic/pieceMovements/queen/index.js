@@ -24,11 +24,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + i) + 'l' + parseInt(piecePosL)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        right.push(verifySquare.pos)
+        break
+      }
       right.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -38,11 +40,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) - i) + 'l' + parseInt(piecePosL)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        left.push(verifySquare.pos)
+        break
+      }
       left.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -52,11 +56,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) + i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        up.push(verifySquare.pos)
+        break
+      }
       up.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -66,11 +72,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + parseInt(piecePosC) + 'l' + (parseInt(piecePosL) - i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        down.push(verifySquare.pos)
+        break
+      }
       down.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -86,11 +94,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + i) + 'l' + (parseInt(piecePosL) + i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalUpRight.push(verifySquare.pos)
+        break
+      }
       diagonalUpRight.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -104,11 +114,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) - i) + 'l' + (parseInt(piecePosL) + i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalUpLeft.push(verifySquare.pos)
+        break
+      }
       diagonalUpLeft.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -122,11 +134,13 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) - i) + 'l' + (parseInt(piecePosL) - i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalDownRight.push(verifySquare.pos)
+        break
+      }
       diagonalDownRight.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
@@ -140,24 +154,18 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
       'c' + (parseInt(piecePosC) + i) + 'l' + (parseInt(piecePosL) - i)
     )
 
-    if (
-      verifySquare.status !== 'ally piece' &&
-      verifySquare.status !== 'invalid position'
-    ) {
+    if (verifySquare.status !== 'invalid position') {
+      if (verifySquare.status === 'ally piece') {
+        diagonalDownLeft.push(verifySquare.pos)
+        break
+      }
       diagonalDownLeft.push(verifySquare.pos)
+      queenMove.push(verifySquare.pos)
       if (verifySquare.status === 'enemy piece') break
     } else break
   }
 
   //========================
-
-  queenMove.push(...up, ...down, ...left, ...right)
-  queenMove.push(
-    ...diagonalUpRight,
-    ...diagonalUpLeft,
-    ...diagonalDownRight,
-    ...diagonalDownLeft
-  )
 
   return {
     pieceId: piece.id,
