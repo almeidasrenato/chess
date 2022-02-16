@@ -131,6 +131,74 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     }
   }
 
+  //Roque
+  //========================
+
+  if (piece.pieceColor === 'light') {
+    if (piece.firstMove === true) {
+      let towerLeft = pieces.find(
+        (item) =>
+          item.typePiece === 'tower' &&
+          item.pos === 'c1l1' &&
+          item.firstMove === true
+      )
+
+      let towerRight = pieces.find(
+        (item) =>
+          item.typePiece === 'tower' &&
+          item.pos === 'c8l1' &&
+          item.firstMove === true
+      )
+
+      if (towerLeft) {
+        let castlingMoveLeft = pieces.find(
+          (item) =>
+            item.pos === 'c2l1' || item.pos === 'c3l1' || item.pos === 'c4l1'
+        )
+
+        if (!castlingMoveLeft) kingMove.push('c3l1')
+      }
+      if (towerRight) {
+        let castlingMoveLeft = pieces.find(
+          (item) => item.pos === 'c6l1' || item.pos === 'c7l1'
+        )
+        if (!castlingMoveLeft) kingMove.push('c7l1')
+      }
+    }
+  }
+
+  if (piece.pieceColor === 'dark') {
+    if (piece.firstMove === true) {
+      let towerLeft = pieces.find(
+        (item) =>
+          item.typePiece === 'tower' &&
+          item.pos === 'c1l8' &&
+          item.firstMove === true
+      )
+
+      let towerRight = pieces.find(
+        (item) =>
+          item.typePiece === 'tower' &&
+          item.pos === 'c8l8' &&
+          item.firstMove === true
+      )
+
+      if (towerLeft) {
+        let castlingMoveLeft = pieces.find(
+          (item) =>
+            item.pos === 'c2l8' || item.pos === 'c3l8' || item.pos === 'c4l8'
+        )
+        if (!castlingMoveLeft) kingMove.push('c3l8')
+      }
+      if (towerRight) {
+        let castlingMoveLeft = pieces.find(
+          (item) => item.pos === 'c6l8' || item.pos === 'c7l8'
+        )
+        if (!castlingMoveLeft) kingMove.push('c7l8')
+      }
+    }
+  }
+  //Fim do Roque
   //========================
 
   return {
@@ -139,6 +207,7 @@ const movementsKing = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceMoves: kingMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [
       ...up,
       ...down,

@@ -100,6 +100,7 @@ const movementsBishop = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceMoves: bishopMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [
       ...diagonalUpRight,
       ...diagonalUpLeft,

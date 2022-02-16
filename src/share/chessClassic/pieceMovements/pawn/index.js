@@ -47,18 +47,13 @@ const movementsPawnLight = (
     if (squareAttackUpRightStatus === 'enemy piece') pawnMove.push(verifyPos)
   }
 
-  //=================================================================
-  if (piece.firstMove === true) {
-  }
-
-  //=================================================================
-
   return {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: pawnMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [
       ...(pawnAttackDiagonalUpLeft
         ? pawnAttackDiagonalUpLeft.diagonalUpLeft
@@ -122,16 +117,13 @@ const movementsPawnDark = (
     if (squareAttackUpRightStatus === 'enemy piece') pawnMove.push(verifyPos)
   }
 
-  //=================================================================
-
-  //=================================================================
-
   return {
     pieceId: piece.id,
     piecePos: piece.pos,
     pieceMoves: pawnMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [
       ...(pawnAttackDiagonalDownLeft
         ? pawnAttackDiagonalDownLeft.diagonalDownLeft

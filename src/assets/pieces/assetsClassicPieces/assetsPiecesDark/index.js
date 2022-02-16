@@ -114,7 +114,7 @@ const queenDarkImg = (
         xmlns='http://www.w3.org/2000/svg'
         width={sizeSquarePiece}
         height={sizeSquarePiece}
-        viewBox='3 3 39 39'
+        viewBox='3 1 40 40'
         fill={pieceColor}
       >
         <path
@@ -510,7 +510,7 @@ const pawnDarkImg = (
         xmlns='http://www.w3.org/2000/svg'
         width={sizeSquarePiece}
         height={sizeSquarePiece}
-        viewBox='2.5 6.5 39 39'
+        viewBox='2.5 5 39 39'
       >
         <path
           id='path3194'

@@ -58,7 +58,72 @@ const returnRemoveMovementsKing = (
   turn
 ) => {
   let newReturnPieceMovements = returnPieceMovements.map((item) => {
-    //Remove movements king ally
+    if (
+      item.pieceType === 'king' &&
+      item.pieceColor === turn &&
+      item.pieceFirstMove === true
+    ) {
+      let check = verifyCheck(AttackPosPiece, item)
+
+      if (check) {
+        item.pieceMoves = item.pieceMoves.filter(
+          (item) =>
+            item !== 'c3l1' &&
+            item !== 'c7l1' &&
+            item !== 'c3l8' &&
+            item !== 'c7l8'
+        )
+      } else {
+        let verifyRoque = item.pieceMoves.find(
+          (item) =>
+            item === 'c3l1' ||
+            item === 'c7l1' ||
+            item === 'c7l1' ||
+            item === 'c3l8' ||
+            item === 'c7l8'
+        )
+
+        if (verifyRoque) {
+          if (verifyRoque === 'c3l1') {
+            if (
+              AttackPosPiece.allEnemyAttackPos.find((item) => item === 'c4l1')
+            ) {
+              item.pieceMoves = item.pieceMoves.filter(
+                (item) => item !== 'c3l1'
+              )
+            }
+          }
+          if (verifyRoque === 'c7l1') {
+            if (
+              AttackPosPiece.allEnemyAttackPos.find((item) => item === 'c6l1')
+            ) {
+              item.pieceMoves = item.pieceMoves.filter(
+                (item) => item !== 'c7l1'
+              )
+            }
+          }
+          if (verifyRoque === 'c3l8') {
+            if (
+              AttackPosPiece.allEnemyAttackPos.find((item) => item === 'c4l8')
+            ) {
+              item.pieceMoves = item.pieceMoves.filter(
+                (item) => item !== 'c3l8'
+              )
+            }
+          }
+          if (verifyRoque === 'c7l8') {
+            if (
+              AttackPosPiece.allEnemyAttackPos.find((item) => item === 'c6l8')
+            ) {
+              item.pieceMoves = item.pieceMoves.filter(
+                (item) => item !== 'c7l8'
+              )
+            }
+          }
+        }
+      }
+    }
+
     if (item.pieceType === 'king' && item.pieceColor === turn) {
       let newMoveKing = item.pieceMoves.filter(
         (item) =>
@@ -178,20 +243,16 @@ const returnRemoveMovementsAlly = (
             }
             return { ...element4 }
           })
-
           pieceAttack = undefined
-
           //==============================================================================
           let newPiecesMovements = pieceMovements(newPieces, turn, true)
           let AttackPiece2 = returnAttackPosPiece(newPiecesMovements, turn)
           let check2 = verifyCheck(AttackPiece2, kingAlly)
-
-          pieceAttack = AttackPiece2.enemyAttack.find((element) =>
-            element.allPiecePosAttack.find(
+          pieceAttack = AttackPiece2.enemyAttack.find((element5) =>
+            element5.allPiecePosAttack.find(
               (element2) => element2 === kingAlly.piecePos
             )
           )
-
           if (check2) {
             newReturnPieceMovements = newReturnPieceMovements.map(
               (element5) => {
@@ -204,9 +265,7 @@ const returnRemoveMovementsAlly = (
               }
             )
           }
-
           pieceAttack = undefined
-
           //===============================================================================
         })
       })
@@ -217,9 +276,6 @@ const returnRemoveMovementsAlly = (
 }
 
 const pieceMovements = (pieces, turn, checkMove) => {
-  // let end, start
-  // start = new Date()
-
   let returnPieceMovements = pieces.map((piece) => {
     let piecePosC = piece.pos[1]
     let piecePosL = piece.pos[3]
@@ -286,11 +342,6 @@ const pieceMovements = (pieces, turn, checkMove) => {
       turn
     )
   }
-
-  //=====================================================
-  // end = new Date()
-
-  // console.log('Operation took ' + (end.getTime() - start.getTime()) + ' msec')
 
   return returnPieceMovements
 }

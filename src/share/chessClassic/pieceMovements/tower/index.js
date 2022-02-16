@@ -82,6 +82,7 @@ const movementsTower = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceMoves: towerMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [...up, ...down, ...left, ...right],
     piecePosAttack: {
       up: up,

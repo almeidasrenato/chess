@@ -173,6 +173,7 @@ const movementsQueen = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceMoves: queenMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [
       ...up,
       ...down,

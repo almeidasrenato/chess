@@ -51,6 +51,7 @@ const movementsHorse = (pieces, piece, piecePosC, piecePosL, verifySquare) => {
     pieceMoves: horseMove,
     pieceColor: piece.pieceColor,
     pieceType: piece.typePiece,
+    pieceFirstMove: piece.firstMove,
     allPiecePosAttack: [
       ...diagonalUpLeft,
       ...diagonalUpRight,

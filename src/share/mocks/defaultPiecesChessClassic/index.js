@@ -5,7 +5,7 @@ import {
   horseLightImg,
   towerLightImg,
   pawnLightImg,
-} from '../../assetsPiecesLight'
+} from '../../../assets/pieces/assetsClassicPieces/assetsPiecesLight'
 
 import {
   queenDarkImg,
@@ -14,7 +14,7 @@ import {
   horseDarkImg,
   towerDarkImg,
   pawnDarkImg,
-} from '../../assetsPiecesDark'
+} from '../../../assets/pieces/assetsClassicPieces/assetsPiecesDark'
 
 const defaultPieces = (props) => [
   {
@@ -23,6 +23,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c5l1',
     firstMove: true,
+    qtdMoves: 0,
     src: kingLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -37,6 +38,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c4l1',
     firstMove: true,
+    qtdMoves: 0,
     src: queenLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -51,6 +53,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c3l1',
     firstMove: true,
+    qtdMoves: 0,
     src: bishopLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -65,6 +68,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c2l1',
     firstMove: true,
+    qtdMoves: 0,
     src: horseLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -79,6 +83,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c1l1',
     firstMove: true,
+    qtdMoves: 0,
     src: towerLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -93,6 +98,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c6l1',
     firstMove: true,
+    qtdMoves: 0,
     src: bishopLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -107,6 +113,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c7l1',
     firstMove: true,
+    qtdMoves: 0,
     src: horseLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -121,6 +128,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c8l1',
     firstMove: true,
+    qtdMoves: 0,
     src: towerLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -135,6 +143,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c1l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -149,6 +158,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c2l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -163,6 +173,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c3l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -177,6 +188,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c4l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -191,6 +203,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c5l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -205,6 +218,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c6l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -219,6 +233,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c7l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -233,6 +248,7 @@ const defaultPieces = (props) => [
     pieceColor: 'light',
     pos: 'c8l2',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnLightImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -247,6 +263,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c5l8',
     firstMove: true,
+    qtdMoves: 0,
     src: kingDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -261,6 +278,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c4l8',
     firstMove: true,
+    qtdMoves: 0,
     src: queenDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -275,6 +293,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c3l8',
     firstMove: true,
+    qtdMoves: 0,
     src: bishopDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -289,6 +308,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c6l8',
     firstMove: true,
+    qtdMoves: 0,
     src: bishopDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -303,6 +323,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c2l8',
     firstMove: true,
+    qtdMoves: 0,
     src: horseDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -317,6 +338,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c7l8',
     firstMove: true,
+    qtdMoves: 0,
     src: horseDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -331,6 +353,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c1l8',
     firstMove: true,
+    qtdMoves: 0,
     src: towerDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -345,6 +368,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c8l8',
     firstMove: true,
+    qtdMoves: 0,
     src: towerDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -359,6 +383,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c1l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -373,6 +398,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c2l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -387,6 +413,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c3l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -401,6 +428,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c4l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -415,6 +443,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c5l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -429,6 +458,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c6l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -443,6 +473,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c7l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,
@@ -457,6 +488,7 @@ const defaultPieces = (props) => [
     pieceColor: 'dark',
     pos: 'c8l7',
     firstMove: true,
+    qtdMoves: 0,
     src: pawnDarkImg(
       props.sizeSquarePiece,
       props.rotate,

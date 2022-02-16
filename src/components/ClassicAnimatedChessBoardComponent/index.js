@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import testPieces from '../../share/mocks/testPieces'
+import defaultAnimatedPiecesClassic from '../../share/mocks/defaultAnimatedPiecesClassic'
 import pieceMovements from '../../share/chessClassic/pieceMovements'
+
+import { Player } from '@lottiefiles/react-lottie-player'
 
 const ChessBoardFieldProps = styled.div`
   display: flex;
@@ -58,21 +60,18 @@ const SquarePreviewMove = styled.div`
   position: absolute;
 `
 
-const ChessBoard = (props) => {
+const ClassicAnimatedChessBoardComponent = (props) => {
   let size = props.size ? props.size : 800
   let squareSize = size / 8
 
   const [chessBoardPieces, setChessBoardPieces] = useState([])
   const [allPieceMovements, setAllPieceMovements] = useState([])
   const [posPieceSelected, setPosPieceSelected] = useState(undefined)
-  const [turn] = useState('light')
+  const [turn, setTurn] = useState('light')
 
   useEffect(() => {
     const loadChessBoard = () => {
-      let pieces = testPieces({
-        ...props.theme,
-        sizeSquarePiece: size / 8 - size / 8 / 5,
-      })
+      let pieces = defaultAnimatedPiecesClassic()
 
       setChessBoardPieces(pieces)
 
@@ -82,11 +81,24 @@ const ChessBoard = (props) => {
     loadChessBoard()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const clickPiece = (pos) => {
+  const clickPiece = (pos, findPiece) => {
     if (posPieceSelected === pos) {
+      chessBoardPieces.map((item) => {
+        if (item.id === findPiece.id) item.activeAnimation = 'a1'
+
+        return { ...item }
+      })
+
       return setPosPieceSelected(undefined)
     }
-    setPosPieceSelected(pos)
+
+    chessBoardPieces.map((item) => {
+      if (item.id === findPiece.id) item.activeAnimation = 'a2'
+
+      return { ...item }
+    })
+
+    return setPosPieceSelected(pos)
   }
 
   const findPiece = (pos, piece) => {
@@ -94,9 +106,22 @@ const ChessBoard = (props) => {
 
     let findPiece = piece.find((item) => item.pos === pos)
 
-    if (findPiece)
-      return <Piece onClick={() => clickPiece(pos)}>{findPiece.src}</Piece>
+    if (findPiece) {
+      const activeAnimation = findPiece.activeAnimation
+      console.log('findPiece', findPiece)
+      console.log('chessBoardPieces', chessBoardPieces)
 
+      return (
+        <Piece onClick={() => clickPiece(pos, findPiece)}>
+          <Player
+            autoplay
+            loop
+            src={findPiece.src[activeAnimation]}
+            style={{ height: '100%', width: '100%' }}
+          ></Player>
+        </Piece>
+      )
+    }
     return null
   }
 
@@ -107,33 +132,78 @@ const ChessBoard = (props) => {
       )
 
       findPieceMove.pos = movedPos
-      findPieceMove.firstMove = false
 
       let newChessBoardPieces = chessBoardPieces
 
-      newChessBoardPieces = newChessBoardPieces.filter(
-        (item) => item.pos !== posPieceSelected
-      )
+      //roque
 
-      newChessBoardPieces = newChessBoardPieces.filter(
-        (item) => item.pos !== movedPos
-      )
+      if (
+        findPieceMove.typePiece === 'king' &&
+        findPieceMove.firstMove === true &&
+        (findPieceMove.pos === 'c3l1' ||
+        findPieceMove.pos === 'c7l1' ||
+        findPieceMove.pos === 'c3l8' ||
+        findPieceMove.pos === 'c7l8'
+          ? true
+          : false) === true
+      ) {
+        if (findPieceMove.pos === 'c3l1') {
+          newChessBoardPieces = newChessBoardPieces.map((item) => {
+            if (item.pos === 'c1l1') item.pos = 'c4l1'
+            return { ...item }
+          })
+        }
+        if (findPieceMove.pos === 'c7l1') {
+          newChessBoardPieces = newChessBoardPieces.map((item) => {
+            if (item.pos === 'c8l1') item.pos = 'c6l1'
+            return { ...item }
+          })
+        }
+        if (findPieceMove.pos === 'c3l8') {
+          newChessBoardPieces = newChessBoardPieces.map((item) => {
+            if (item.pos === 'c1l8') item.pos = 'c4l8'
+            return { ...item }
+          })
+        }
+        if (findPieceMove.pos === 'c7l8') {
+          newChessBoardPieces = newChessBoardPieces.map((item) => {
+            if (item.pos === 'c8l8') item.pos = 'c6l8'
+            return { ...item }
+          })
+        }
+      } else {
+        newChessBoardPieces = newChessBoardPieces.filter(
+          (item) => item.pos !== posPieceSelected
+        )
+
+        newChessBoardPieces = newChessBoardPieces.filter(
+          (item) => item.pos !== movedPos
+        )
+      }
+      // Fim do roque
+
+      findPieceMove.firstMove = false
 
       newChessBoardPieces.push(findPieceMove)
 
       setChessBoardPieces(newChessBoardPieces)
       setPosPieceSelected(undefined)
-      let returnPieceMovements = pieceMovements(newChessBoardPieces, turn)
+
+      let newTurn = turn === 'light' ? 'dark' : 'light'
+
+      let returnPieceMovements = pieceMovements(newChessBoardPieces, newTurn)
       setAllPieceMovements(returnPieceMovements)
+
+      setTurn(newTurn)
     }
 
     if (posPieceSelected) {
-      let pieceAllMoves = allPieceMovements.find(
-        (item) => item.piecePos === posPieceSelected
+      let pieceAllyMoves = allPieceMovements.find(
+        (item) => item.piecePos === posPieceSelected && item.pieceColor === turn
       )
 
-      if (pieceAllMoves) {
-        let findPosPreviewReturn = pieceAllMoves.pieceMoves.find(
+      if (pieceAllyMoves) {
+        let findPosPreviewReturn = pieceAllyMoves.pieceMoves.find(
           (item) => item === movedPos
         )
 
@@ -203,4 +273,4 @@ const ChessBoard = (props) => {
   )
 }
 
-export default ChessBoard
+export default ClassicAnimatedChessBoardComponent
