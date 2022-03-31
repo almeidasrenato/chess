@@ -70,7 +70,7 @@ const ClassicChessBoardComponent = (props) => {
   const [posPieceSelected, setPosPieceSelected] = useState(undefined)
   const [turn, setTurn] = useState('light')
 
-  const [response, setResponse] = useState('')
+  // const [response, setResponse] = useState('')
 
   useEffect(() => {
     const loadChessBoard = () => {
@@ -87,10 +87,13 @@ const ClassicChessBoardComponent = (props) => {
     loadChessBoard()
 
     //socket
-    const socket = socketIOClient(ENDPOINT)
-    socket.on('FromAPI', (data) => {
-      setResponse(data)
-    })
+
+    //Aqui já estava começando a implementaçao de websocket no front
+
+    // const socket = socketIOClient(ENDPOINT)
+    // socket.on('FromAPI', (data) => {
+    //   setResponse(data)
+    // })
 
     //=======
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -213,9 +216,9 @@ const ClassicChessBoardComponent = (props) => {
 
   return (
     <div>
-      <p>
+      {/* <p>
         It's <time dateTime={response}>{response}</time>
-      </p>
+      </p> */}
 
       <ChessBoardFieldProps
         background={props.theme.background}
